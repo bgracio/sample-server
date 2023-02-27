@@ -15,18 +15,23 @@ app.put("/counter", (req, res) => {
   res.send({ counter });
 });
 
+app.get("/", (req, res) => {
+  console.log("GET /: ", req.get('user-agent'));
+  res.send("Hello World");
+});
+
 app.get("/img1", (req, res) => {
-  console.log("GET /img1: ", counter, req.get('user-agent'));
+  console.log("GET /img1: ", req.get('user-agent'));
   res.sendFile(path + "/images/720_1.jpeg");
 });
 
 app.get("/img2", (req, res) => {
-  console.log("GET /img2: ", counter, req.get('user-agent'));
+  console.log("GET /img2: ", req.get('user-agent'));
   res.sendFile(path + "/images/720_2.jpeg");
 });
 
 app.get("/img3", (req, res) => {
-  console.log("GET /img3: ", counter, req.get('user-agent'));
+  console.log("GET /img3: ", req.get('user-agent'));
   res.sendFile(path + "/images/720_3.jpeg");
 });
 
