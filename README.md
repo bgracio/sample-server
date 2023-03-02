@@ -27,4 +27,17 @@ function logMessage(message) {
 
     req.write(data);
 }
+
+function initProcessCheck() {
+  process
+    .on("uncaughtException", function (err) {
+      const stackTrace = err.stack || err;
+      logMessage("[PROCESS]: Caught Exception: " + stackTrace);
+    })
+    .on("unhandledRejection", function (reason) {
+      logMessage("[PROCESS]: Unhandled Rejection at Promise: " + reason);
+    });
+}
+
+initProcessCheck();
 ```
